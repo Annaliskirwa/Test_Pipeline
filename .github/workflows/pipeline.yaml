@@ -9,10 +9,18 @@ jobs:
         run: |
           git clone https://github.com/Annaliskirwa/_Test.git
           echo "Cloned the repository"
-      - name: Updating the image tags for master
+      - name: Switching folder
         run: |
           ls -la
           echo "Switching folders"
           cd _Test
+      - name: Switching branches
+        run: |
           git switch master
           echo "Switched branch to master"
+      - name: Update image tag for values.yaml file
+        run: |
+          if [-f values.yaml];
+            then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
+          fi
+          echo "updated the image tag to today"
