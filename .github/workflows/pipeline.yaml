@@ -20,7 +20,9 @@ jobs:
       - name: Update image tag for values.yaml file
         run: |
           echo "Trying to update image tags"
+          pwd
           if [ -f values.yaml ];
+          ls -la
             then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
           fi
           echo "updated the image tag to today"
