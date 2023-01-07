@@ -14,6 +14,7 @@ jobs:
           ls -la
           echo "Switching folders"
           cd _Test
+          ls -la
           git switch master
           echo "Switched branch to master"
       - name: Update image tag for values.yaml file
