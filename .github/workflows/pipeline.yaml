@@ -19,6 +19,9 @@ jobs:
           echo "Switched branch to master"
       - name: Update image tag for values.yaml file
         run: |
+          ls -la
+          echo "Switching folders"
+          cd _Test
           echo "Trying to update image tags"
           pwd
           if [ -f values.yaml ];
