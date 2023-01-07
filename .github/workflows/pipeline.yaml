@@ -16,6 +16,7 @@ jobs:
           cd _Test
       - name: Switching branches
         run: |
+          git branch -la
           git switch master
           echo "Switched branch to master"
       - name: Update image tag for values.yaml file
