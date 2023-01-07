@@ -9,7 +9,9 @@ jobs:
         run: |
           git clone https://github.com/Annaliskirwa/_Test.git
           echo "Cloned the repository"
-      - name: Updating the image tags for master
-        run: |
           git switch master
           echo "Switched branch to master"
+      - name: Updating the image tags for master
+        run: |
+          # git switch master
+          # echo "Switched branch to master"
