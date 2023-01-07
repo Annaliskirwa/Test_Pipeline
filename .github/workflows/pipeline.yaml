@@ -24,3 +24,4 @@ jobs:
             then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
           fi
           echo "updated the image tag to today"
+
