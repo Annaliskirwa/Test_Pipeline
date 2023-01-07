@@ -13,6 +13,6 @@ jobs:
         run: |
           ls -la
           echo "Switching folders"
-          cd test
+          cd _Test
           git switch master
           echo "Switched branch to master"
