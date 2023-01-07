@@ -1,0 +1,11 @@
+#updates values
+name: pipeline
+on: [push]
+jobs:
+  update_values:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the test repository
+        run: |
+          git clone https://github.com/Annaliskirwa/_Test.git
+          echo "Cloned the repository"
