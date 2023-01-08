@@ -40,7 +40,7 @@ jobs:
           git add values.yaml
           git commit -am "updated the tag to today"
           echo "Committed successfully"
-          git push https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git HEAD:master --force
+          git push https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git HEAD:master --force
           echo "Pushed successfully"
           
 
