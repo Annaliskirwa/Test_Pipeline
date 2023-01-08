@@ -32,7 +32,9 @@ jobs:
         run: |
           cd _Test
           pwd
-          git commit -m "updated the tag to today"
-          echo "Committed successfully"
+          ls -la
           cat values.yaml
+          # git commit -m "updated the tag to today"
+          echo "Committed successfully"
+          
 
