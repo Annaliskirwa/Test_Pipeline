@@ -36,7 +36,6 @@ jobs:
           cat values.yaml
           git config --global user.name "Annaliskirwa"
           git config --global user.email "annaliskirwa@gmail.com"
-          git config --global user.password "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"
           git add values.yaml
           git commit -am "updated the tag to today"
           echo "Committed successfully"
