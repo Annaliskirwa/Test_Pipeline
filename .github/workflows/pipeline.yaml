@@ -7,7 +7,8 @@ jobs:
     steps:
       - name: Clone the test repository
         run: |
-          git clone https://github.com/Annaliskirwa/_Test.git
+          # git clone https://github.com/Annaliskirwa/_Test.git
+          git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
           echo "Cloned the repository"
       - name: Updating the image tags for master
         run: |
