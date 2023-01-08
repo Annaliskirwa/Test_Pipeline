@@ -28,13 +28,17 @@ jobs:
           fi
           echo "updated the image tag to today"
           cat values.yaml
-      - name: Commit the changes
+      - name: Commit the changes and push to master
         run: |
           cd _Test
           pwd
           ls -la
           cat values.yaml
-          # git commit -m "updated the tag to today"
+          git config --global user.name "Annaliskirwa"
+          git config --global user.password "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"
+          git commit -m "updated the tag to today"
           echo "Committed successfully"
+          git push origin master
+          echo "Pushed successfully"
           
 
