@@ -40,10 +40,7 @@ jobs:
           git add values.yaml
           git commit -am "updated the tag to today"
           echo "Committed successfully"
-          git config --global user.name "Annaliskirwa"
-          git config --global user.email "annaliskirwa@gmail.com"
-          git config --global user.password "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"
-          git push origin master
+          git push origin master https://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@github.com/Annaliskirwa/_Test.git
           echo "Pushed successfully"
           
 
