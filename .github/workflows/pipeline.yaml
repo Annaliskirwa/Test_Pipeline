@@ -1,4 +1,4 @@
-#updates values1
+#updates values
 name: pipeline
 on: [push]
 jobs:
@@ -28,7 +28,7 @@ jobs:
             then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
           fi
           echo "updated the image tag to today"
-          cat values.yaml
+#          cat values.yaml
       - name: Commit the changes and push to master
         uses: actions/checkout@v3
         with:
