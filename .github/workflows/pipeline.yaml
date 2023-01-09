@@ -42,7 +42,7 @@ jobs:
           echo "Committed successfully"
           # git config --global --replace-all remote.origin.url https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
           # git push https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git HEAD:master --force
-          git push origin master
+          git push https://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@github.com/Annaliskirwa/_Test.git
           echo "Pushed successfully"
           
 
