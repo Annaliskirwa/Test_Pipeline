@@ -30,6 +30,9 @@ jobs:
           echo "updated the image tag to today"
           cat values.yaml
       - name: Commit the changes and push to master
+        uses: actions/checkout@v3
+        with:
+        token: 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
         run: |
           cd _Test
           pwd
@@ -40,5 +43,6 @@ jobs:
           git add values.yaml
           git commit -am "updated the tag to today"
           echo "Committed successfully"
-          git push https://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@github.com/Annaliskirwa/_Test.git
+          git push
+#          git push https://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@github.com/Annaliskirwa/_Test.git
           echo "Pushed successfully"
