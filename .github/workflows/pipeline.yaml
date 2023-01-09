@@ -1,6 +1,6 @@
-##updates values
-#name: pipeline
-#on: [push]
+#updates values
+name: pipeline
+on: [push]
 #jobs:
 #  update_values:
 #    runs-on: ubuntu-latest
