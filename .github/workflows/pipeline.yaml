@@ -82,5 +82,6 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: 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
+          github_token: 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
           branch: master
+          github_url: https://github.com/Annaliskirwa/_Test.git/
