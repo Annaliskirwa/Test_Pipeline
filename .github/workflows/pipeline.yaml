@@ -74,9 +74,9 @@ jobs:
           cat values.yaml
       - name: Commit files
         run: |
-          git config --local user.email "annaliskirwa@gmail.com"
-          git config --local user.name "Annaliskirwa"
           cd _Test
+          git config --global user.email "annaliskirwa@gmail.com"
+          git config --global user.name "Annaliskirwa"
           git add values.yaml
           git commit -a -m "Add changes"
       - name: Push changes
