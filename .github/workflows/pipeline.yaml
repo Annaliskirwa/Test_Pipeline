@@ -32,7 +32,7 @@ jobs:
       - name: Commit the changes and push to master
         uses: actions/checkout@v3
         with:
-        token: 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
+          token: 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
         run: |
           cd _Test
           pwd
