@@ -39,5 +39,6 @@ jobs:
           git config --global user.email "annaliskirwa@gmail.com"
           git add values.yaml
           git commit -am "updated the tag to today"
-          echo "Committed successfully"git push https://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@github.com/Annaliskirwa/_Test.git
+          echo "Committed successfully"
+          git push https://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@github.com/Annaliskirwa/_Test.git
           echo "Pushed successfully"
