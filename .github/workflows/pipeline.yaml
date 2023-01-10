@@ -1,4 +1,4 @@
-#updates values1
+#updates values
 name: pipeline
 on: [push]
 #jobs:
