@@ -1,67 +1,24 @@
 #updates values
 name: pipeline
 on: [push]
-#jobs:
-#  update_values:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Clone the test repository
-#        run: |
-#          # git clone https://github.com/Annaliskirwa/_Test.git
-#          git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
-#          echo "Cloned the repository"
-#      - name: Updating the image tags for master
-#        run: |
-#          ls -la
-#          echo "Switching folders"
-#          cd _Test
-#          ls -la
-#          git switch master
-#          echo "Switched branch to master"
-#      - name: Update image tag for values.yaml file
-#        run: |
-#          cd _Test
-#          echo "Trying to update image tags"
-#          pwd
-#          if [ -f values.yaml ];
-#          ls -la
-#            then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
-#          fi
-#          echo "updated the image tag to today"
-#          cat values.yaml
-#      - name: Commit the changes and push to master
-#        uses: actions/checkout@v3
-#        with:
-#          token: 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
-#        run: |
-#          cd _Test
-#          pwd
-#          ls -la
-#          cat values.yaml
-#          git config --global user.name "Annaliskirwa"
-#          git config --global user.email "annaliskirwa@gmail.com"
-#          git add values.yaml
-#          git commit -am "updated the tag to today"
-#          echo "Committed successfully"
-#          git push
-##          git push https://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@github.com/Annaliskirwa/_Test.git
-#          echo "Pushed successfully"
-#
-
-
 jobs:
-  build:
+  update_values:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: Clone the test repository
         run: |
+          # git clone https://github.com/Annaliskirwa/_Test.git
           git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
           echo "Cloned the repository"
-      - name: Create local changes
+      - name: Updating the image tags for master
+        run: |
+          ls -la
+          echo "Switching folders"
+          cd _Test
+          ls -la
+          git switch master
+          echo "Switched branch to master"
+      - name: Update image tag for values.yaml file
         run: |
           cd _Test
           echo "Trying to update image tags"
@@ -72,16 +29,20 @@ jobs:
           fi
           echo "updated the image tag to today"
           cat values.yaml
-      - name: Commit files
+      - name: Commit the changes and push to master
+        uses: actions/checkout@v3
+        with:
+          token: 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
         run: |
           cd _Test
-          git config --global user.email "annaliskirwa@gmail.com"
+          pwd
+          ls -la
+          cat values.yaml
           git config --global user.name "Annaliskirwa"
+          git config --global user.email "annaliskirwa@gmail.com"
           git add values.yaml
-          git commit -a -m "Add changes"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: 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
-          branch: master
-          github_url: https://github.com/Annaliskirwa/_Test.git/
+          git commit -am "updated the tag to today"
+          echo "Committed successfully"
+          git push
+#          git push https://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@github.com/Annaliskirwa/_Test.git
+          echo "Pushed successfully"
