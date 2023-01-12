@@ -41,7 +41,7 @@ jobs:
         pwd
         if [ -f values.yaml ];
         ls -la
-          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: ${{ env.IMAGE_TAG }}/'  values.yaml;
+          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "${{ env.IMAGE_TAG }}"/'  values.yaml;
         fi
         echo "updated the image tag to ${{ env.IMAGE_TAG }}"
         cat values.yaml
