@@ -13,7 +13,7 @@ jobs:
       CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
       CI_COMMIT_AUTHOR: Annaliskirwa
       CI_COMMIT_EMAIL: annaliskirwa@gmail.comx
-      IMAGE_TAG: $((RANDOM))
+      # IMAGE_TAG: $((RANDOM))
     steps:
     - uses: actions/checkout@v3
       with:
@@ -25,7 +25,7 @@ jobs:
         git clone https://github.com/Annaliskirwa/_Test.git
         # git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
         echo "Cloned the repository"
-    - name: Updating the image tags for master
+    - name: Switching to master
       run: |
         ls -la
         echo "Switching folders"
@@ -37,13 +37,15 @@ jobs:
       run: |
         cd _Test
         echo "Trying to update image tags"
-        echo ${{ env.IMAGE_TAG }}
+        IMAGE_TAG=$((RANDOM))
+        echo "$IMAGE_TAG"
         pwd
         if [ -f values.yaml ];
         ls -la
-          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "${{ env.IMAGE_TAG }}"/'  values.yaml;
+          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/'  values.yaml;
         fi
-        echo "updated the image tag to ${{ env.IMAGE_TAG }}"
+        # echo "updated the image tag to ${{ env.IMAGE_TAG }}"
+        echo "updated the image tag to $IMAGE_TAG"
         cat values.yaml
     - name: Commit the changes
       run: |
