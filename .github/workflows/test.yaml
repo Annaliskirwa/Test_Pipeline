@@ -39,9 +39,9 @@ jobs:
         pwd
         if [ -f values.yaml ];
         ls -la
-          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
+          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "tomorow"/'  values.yaml;
         fi
-        echo "updated the image tag to today"
+        echo "updated the image tag to tomorow"
         cat values.yaml
     - name: Commit the changes
       run: |
