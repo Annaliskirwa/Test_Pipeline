@@ -5,6 +5,9 @@ jobs:
   update_values:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          token: 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
       - name: Clone the test repository
         run: |
           # git clone https://github.com/Annaliskirwa/_Test.git
@@ -30,9 +33,6 @@ jobs:
           echo "updated the image tag to today"
           cat values.yaml
       - name: Commit the changes and push to master
-        uses: actions/checkout@v3
-        with:
-          token: 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
         run: |
           cd _Test
           pwd
