@@ -58,5 +58,7 @@ jobs:
     - name: Set the remote origin
       run: |
         git remote set-url origin https://github.com/Annaliskirwa/_Test.git
-        echo "Remopte origin has been set"
+        echo "Remote origin has been set"
+        git push
+        echo "Pushed successfully"
 
