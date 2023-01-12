@@ -60,8 +60,8 @@ jobs:
         git remote set-url origin https://github.com/Annaliskirwa/_Test.git
         echo "Remote origin has been set"
         # git fetch --unshallow upstream
-        git config pull.rebase false --allow-unrelated-histories
-        git pull
+        # git config pull.rebase false
+        git pull origin master --allow-unrelated-histories
         git push --set-upstream origin master
         echo "Pushed successfully"
 
