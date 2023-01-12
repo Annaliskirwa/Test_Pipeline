@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
-        repository: _Test
+        repository: Annaliskirwa/_Test
         ref: 'master'
     - name: Clone the test repository
       run: |
