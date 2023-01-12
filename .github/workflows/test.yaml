@@ -61,8 +61,8 @@ jobs:
         echo "Remote origin has been set"
         git config pull.rebase false
         git pull origin master --allow-unrelated-histories
-        echo "Merged unrealted histories"
-        git fetch --unshallow master
-        git push --set-upstream origin master
+        echo "Merged unrelated histories"
+        # git fetch --unshallow origin/master
+        git push --set-upstream origin master --force
         echo "Pushed successfully"
 
