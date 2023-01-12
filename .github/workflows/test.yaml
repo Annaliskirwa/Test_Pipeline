@@ -54,8 +54,9 @@ jobs:
         git add values.yaml
         git commit -am "${{ env.CI_COMMIT_MESSAGE }}"
         echo "Committed successfully"
+        git remote set-url origin https://github.com/Annaliskirwa/_Test.git
         git push origin master
-        # git push https://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@github.com/Annaliskirwa/_Test.git
+        # git push https://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@github.com/Annaliskirwa/_Test.git origin master
         # echo "Pushed successfully"
     # - name: Set the remote origin
     #   run: |
