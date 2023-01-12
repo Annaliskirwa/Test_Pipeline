@@ -13,7 +13,7 @@ jobs:
       CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
       CI_COMMIT_AUTHOR: Annaliskirwa
       CI_COMMIT_EMAIL: annaliskirwa@gmail.comx
-      IMAGE_TAG: $RANDOM
+      IMAGE_TAG: $RANDOM/e
     steps:
     - uses: actions/checkout@v3
       with:
