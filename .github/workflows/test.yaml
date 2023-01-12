@@ -38,16 +38,26 @@ jobs:
         cd _Test
         echo "Trying to update image tags"
         IMAGE_TAG=$((RANDOM))
-        echo "$IMAGE_TAG"
         pwd
+        echo "Updating values yaml"
         if [ -f values.yaml ];
-        ls -la
-        echo "inside if $IMAGE_TAG"
           then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values.yaml;
         fi
+
+        echo "Updating values-test yaml"
+        if [ -f values-test.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-test.yaml;
+        fi
+
+        echo "Updating values-prod yaml"
+        if [ -f values-prod.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-prod.yaml;
+        fi
+
         # echo "updated the image tag to ${{ env.IMAGE_TAG }}"
-        echo "updated the image tag to $IMAGE_TAG"
+        echo "updated the image tags to $IMAGE_TAG"
         cat values.yaml
+        
     - name: Commit the changes
       run: |
         cd _Test
