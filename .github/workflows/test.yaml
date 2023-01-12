@@ -63,6 +63,7 @@ jobs:
         git pull origin master --allow-unrelated-histories
         echo "Merged unrelated histories"
         # git fetch --unshallow origin/master
+        git fetch --unshallow origin
         git push --set-upstream origin master --force
         echo "Pushed successfully"
 
