@@ -1,0 +1,58 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env: 
+      CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
+      CI_COMMIT_AUTHOR: Annaliskirwa
+      CI_COMMIT_EMAIL: annaliskirwa@gmail.com
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
+    - name: Clone the test repository
+      run: |
+        git clone https://github.com/Annaliskirwa/_Test.git
+        # git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
+        echo "Cloned the repository"
+    - name: Updating the image tags for master
+      run: |
+        ls -la
+        echo "Switching folders"
+        cd _Test
+        ls -la
+        git switch master
+        echo "Switched branch to master"
+    - name: Update image tag for values.yaml file
+      run: |
+        cd _Test
+        echo "Trying to update image tags"
+        pwd
+        if [ -f values.yaml ];
+        ls -la
+          then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
+        fi
+        echo "updated the image tag to today"
+        cat values.yaml
+    - name: Commit the changes and push to master
+      run: |
+        cd _Test
+        pwd
+        ls -la
+        cat values.yaml
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+        git add values.yaml
+        git commit -am "${{ env.CI_COMMIT_MESSAGE }}"
+        echo "Committed successfully"
+        # git push
+        # git push https://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@github.com/Annaliskirwa/_Test.git
+        # echo "Pushed successfully"
+
