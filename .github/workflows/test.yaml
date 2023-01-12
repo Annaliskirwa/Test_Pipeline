@@ -13,7 +13,7 @@ jobs:
       CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
       CI_COMMIT_AUTHOR: Annaliskirwa
       CI_COMMIT_EMAIL: annaliskirwa@gmail.comx
-      # IMAGE_TAG: $((RANDOM))
+      IMAGE_TAG: $((RANDOM))
     steps:
     - uses: actions/checkout@v3
       with:
@@ -33,11 +33,11 @@ jobs:
         ls -la
         git switch master
         echo "Switched branch to master"
-    - name: Update image tag for values.yaml file
+    - name: Update image tag for values profiles file
       run: |
         cd _Test
         echo "Trying to update image tags"
-        IMAGE_TAG=$((RANDOM))
+        # IMAGE_TAG=$((RANDOM))
         pwd
         echo "Updating values yaml"
         if [ -f values.yaml ];
@@ -57,7 +57,7 @@ jobs:
         # echo "updated the image tag to ${{ env.IMAGE_TAG }}"
         echo "updated the image tags to $IMAGE_TAG"
         cat values.yaml
-        
+
     - name: Commit the changes
       run: |
         cd _Test
@@ -74,6 +74,12 @@ jobs:
         cd _Test
         git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:master --force
         echo "Pushed successfully"
+    - name: Switching to ft_values
+      run: |
+        cd _Test
+        git switch ft_values
+        echo "Switched branch to ft_values"
+
 
     
 
