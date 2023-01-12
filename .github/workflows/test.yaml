@@ -13,7 +13,7 @@ jobs:
       CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
       CI_COMMIT_AUTHOR: Annaliskirwa
       CI_COMMIT_EMAIL: annaliskirwa@gmail.comx
-      IMAGE_TAG: $RANDOM/e
+      IMAGE_TAG: $((RANDOM))
     steps:
     - uses: actions/checkout@v3
       with:
@@ -37,6 +37,7 @@ jobs:
       run: |
         cd _Test
         echo "Trying to update image tags"
+        echo ${{ env.IMAGE_TAG }}
         pwd
         if [ -f values.yaml ];
         ls -la
