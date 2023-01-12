@@ -56,7 +56,7 @@ jobs:
         echo "Committed successfully"
         # git remote set-url origin https://github.com/Annaliskirwa/_Test.git
         # git push origin master
-        git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:master --force
+        # git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:master --force
         # echo "Pushed successfully"
     # - name: Set the remote origin
     #   run: |
@@ -71,5 +71,11 @@ jobs:
     #     # git push origin master
     #     git push --set-upstream origin master --force
     #     echo "Pushed successfully"
+    - name: Push the changes
+      run: |
+        cd _Test
+        git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:master --force
+        echo "Pushed successfully"
+
     
 
