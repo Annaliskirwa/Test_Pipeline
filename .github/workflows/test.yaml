@@ -41,7 +41,7 @@ jobs:
         fi
         echo "updated the image tag to today"
         cat values.yaml
-    - name: Commit the changes and push to master
+    - name: Commit the changes
       run: |
         cd _Test
         pwd
@@ -60,6 +60,7 @@ jobs:
         git remote set-url origin https://github.com/Annaliskirwa/_Test.git
         echo "Remote origin has been set"
         # git fetch --unshallow upstream
+        git pull
         git push --set-upstream origin master
         echo "Pushed successfully"
 
