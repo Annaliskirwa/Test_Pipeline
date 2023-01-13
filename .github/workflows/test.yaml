@@ -37,7 +37,7 @@ jobs:
       run: |
         cd _Test
         echo "Trying to update image tags"
-        IMAGE_TAG=$((RANDOM))
+        export IMAGE_TAG=$((RANDOM))
         pwd
         echo "Updating values yaml"
         if [ -f values.yaml ];
