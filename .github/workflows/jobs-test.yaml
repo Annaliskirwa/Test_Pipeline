@@ -8,7 +8,7 @@ on:
       username:
         description: 'A username in git'
         default: 'AnnalisKirwa'
-        required: true
+        required: false
         type: string
 jobs:
   print-username:
