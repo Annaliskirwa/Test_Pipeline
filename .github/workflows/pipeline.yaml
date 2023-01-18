@@ -88,7 +88,7 @@ jobs:
       run: |
         cd _Test
         if [ -f values-pre-prod.yaml ];
-          then yq e '.image.tag=env(IMAGE_TAG)' -i  values-pre-prod.yaml;
+          then yq e '.image.tag="${{ env.IMAGE }}"' -i  values-pre-prod.yaml;
         fi
         cat values-pre-prod.yaml
     - name: Commiting changes for values pre prod yaml
