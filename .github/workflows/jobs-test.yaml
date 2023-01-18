@@ -28,4 +28,4 @@ jobs:
     steps:
     - name: Display my github username
       run: |
-        echo "My github username is ${{ outputs.workflow_output1}}"
+        echo "My github username is ${{ outputs.workflow_output1 }}"
