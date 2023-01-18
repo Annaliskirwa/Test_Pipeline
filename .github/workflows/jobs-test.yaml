@@ -7,7 +7,7 @@ on:
     inputs:
       username:
         description: 'A username in git'
-        default: 'Annalis Kirwa'
+        default: 'AnnalisKirwa'
         required: true
         type: string
 jobs:
@@ -17,4 +17,4 @@ jobs:
     steps:
     - name: Display my github username
       run: |
-        echo My github username is ${{ inputs.username }}
+        echo "My github username is ${{ inputs.username }}"
