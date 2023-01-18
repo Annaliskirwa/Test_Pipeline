@@ -25,6 +25,7 @@ jobs:
   print-username-one:
     runs-on: ubuntu-latest
     name: Job_Two
+    needs: Job_One
     steps:
     - name: Display my github username
       run: |
