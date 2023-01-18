@@ -53,12 +53,12 @@ jobs:
 
         echo "Updating values-test yaml"
         if [ -f values-test.yaml ];
-          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-test.yaml;
+          then yq e '.image.tag=env(IMAGE_TAG)' -i  values-test.yaml;
         fi
 
         echo "Updating values-prod yaml"
         if [ -f values-prod.yaml ];
-          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-prod.yaml;
+          then yq e '.image.tag=env(IMAGE_TAG)' -i  values-prod.yaml;
         fi
 
         # echo "updated the image tag to ${{ env.IMAGE_TAG }}"
