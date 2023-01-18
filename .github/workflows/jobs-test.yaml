@@ -10,11 +10,22 @@ on:
         default: 'AnnalisKirwa'
         required: false
         type: string
+    outputs:
+      workflow_output1:
+        description: "The first output"
+        value: ${{ jobs.Job_One.outputs.job_output1 }}
 jobs:
   print-username:
     runs-on: ubuntu-latest
-    name: Job One
+    name: Job_One
     steps:
     - name: Display my github username
       run: |
         echo "My github username is ${{ inputs.username }}"
+  print-username-one:
+    runs-on: ubuntu-latest
+    name: Job_Two
+    steps:
+    - name: Display my github username
+      run: |
+        echo "My github username is ${{ outputs.workflow_output1}}"
