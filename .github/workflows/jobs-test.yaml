@@ -13,7 +13,7 @@ on:
     outputs:
       workflow_output1:
         description: "The first output"
-        value: ${{ jobs.Job_One.outputs.job_output1 }}
+        value: 'rtyuio'
 jobs:
   print-username:
     runs-on: ubuntu-latest
