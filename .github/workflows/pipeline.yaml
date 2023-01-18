@@ -48,7 +48,7 @@ jobs:
         pwd
         echo "Updating values yaml"
         if [ -f values.yaml ];
-          then yq e '.image.tag = "$IMAGE_TAG"' -i values.yaml && cat values.yaml;
+          then yq e '.image.tag = "${{ env.IMAGE }}"' -i values.yaml && cat values.yaml;
         fi
 
         echo "Updating values-test yaml"
