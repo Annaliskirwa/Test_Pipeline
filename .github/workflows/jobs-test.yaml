@@ -1,0 +1,20 @@
+name: Jobs-Test
+on:
+  push:
+    branches:
+      - master
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username in git'
+        default: 'Annalis Kirwa'
+        required: true
+        type: string
+jobs:
+  print-username:
+    runs-on: ubuntu-latest
+    name: Job One
+    steps:
+    - name: Display my github username
+      run: |
+        echo "My github username is ${{ inputs.username }}"
