@@ -1,51 +1,107 @@
-#updates values
-name: pipeline
-on: 
+name: CI
+on:
   push:
     branches:
-      - main
+      - master
+  pull_request:
+    branches:
+      - master
 jobs:
-  update_values:
+  Trying-yq:
     runs-on: ubuntu-latest
+    env: 
+      CI_COMMIT_MESSAGE: Continuous Integration For Changing Tag in Test Repo
+      CI_COMMIT_AUTHOR: Annaliskirwa
+      CI_COMMIT_EMAIL: annaliskirwa@gmail.comx
+      # IMAGE_TAG: "${{ $((RANDOM)) }}"
     steps:
-      - uses: actions/checkout@v3
-        with:
-          token: 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
-      - name: Clone the test repository
-        run: |
-          # git clone https://github.com/Annaliskirwa/_Test.git
-          git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
-          echo "Cloned the repository"
-      - name: Updating the image tags for master
-        run: |
-          ls -la
-          echo "Switching folders"
-          cd _Test
-          ls -la
-          git switch master
-          echo "Switched branch to master"
-      - name: Update image tag for values.yaml file
-        run: |
-          cd _Test
-          echo "Trying to update image tags"
-          pwd
-          if [ -f values.yaml ];
-          ls -la
-            then sed -ri '1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "today"/'  values.yaml;
-          fi
-          echo "updated the image tag to today"
-          cat values.yaml
-      - name: Commit the changes and push to master
-        run: |
-          cd _Test
-          pwd
-          ls -la
-          cat values.yaml
-          git config --global user.name "Annaliskirwa"
-          git config --global user.email "annaliskirwa@gmail.com"
-          git add values.yaml
-          git commit -am "updated the tag to today"
-          echo "Committed successfully"
-          # git push
-          git push https://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@github.com/Annaliskirwa/_Test.git
-          echo "Pushed successfully"
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
+        repository: Annaliskirwa/_Test
+        ref: 'master'
+    - name: Clone the test repository
+      run: |
+        git clone https://github.com/Annaliskirwa/_Test.git
+        # git clone https://Annaliskirwa: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@github.com/Annaliskirwa/_Test.git
+        echo "Cloned the repository"
+    - name: Switching to master
+      run: |
+        ls -la
+        echo "Switching folders"
+        cd _Test
+        ls -la
+        git switch master
+        echo "Switched branch to master"
+    - name: Update image tag for values profiles file
+      run: |
+        cd _Test
+        echo "Trying to update image tags"
+        IMAGE_TAG=$((RANDOM))
+        echo IMAGE=$IMAGE_TAG >> $GITHUB_ENV
+        pwd
+        echo "Updating values yaml"
+        if [ -f values.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values.yaml;
+        fi
+
+        echo "Updating values-test yaml"
+        if [ -f values-test.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-test.yaml;
+        fi
+
+        echo "Updating values-prod yaml"
+        if [ -f values-prod.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "$IMAGE_TAG"/"  values-prod.yaml;
+        fi
+
+        # echo "updated the image tag to ${{ env.IMAGE_TAG }}"
+        echo "updated the image tags to $IMAGE_TAG"
+        cat values.yaml
+
+    - name: Commit the changes
+      run: |
+        cd _Test
+        pwd
+        ls -la
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+        git add .
+        git commit -am "${{ env.CI_COMMIT_MESSAGE }}"
+        echo "Committed successfully"
+    - name: Push the changes
+      run: |
+        cd _Test
+        git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:master --force
+        echo "Pushed successfully"
+    - name: Switching to ft_values
+      run: |
+        cd _Test
+        git switch ft_values
+        echo "Switched branch to ft_values"
+    - name: Updating image tag for values pre prod yaml
+      run: |
+        cd _Test
+        if [ -f values-pre-prod.yaml ];
+          then sed -ri "1,/^(\s*)(tag*)/ s/^(\s*)(tag*:[[:blank:]]*).*/\1tag: "${{ env.IMAGE }}"/"  values-pre-prod.yaml;
+        fi
+        cat values-pre-prod.yaml
+    - name: Commiting changes for values pre prod yaml
+      run: |
+        cd _Test
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+        git add .
+        git commit -am "${{ env.CI_COMMIT_MESSAGE }}"
+        echo "Committed successfully"
+    - name: Push the changes to ft_values
+      run: |
+        cd _Test
+        git push https://${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}@github.com/Annaliskirwa/_Test.git HEAD:ft_values --force
+        echo "Pushed successfully"
+
+
+
+
+    
+
