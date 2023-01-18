@@ -17,4 +17,4 @@ jobs:
     steps:
     - name: Display my github username
       run: |
-        echo "My github username is ${{ inputs.username }}"
+        echo My github username is ${{ inputs.username }}
